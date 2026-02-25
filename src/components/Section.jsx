@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 
 export const Section = ({ children, className = '', delay = 0 }) => {
+    const MotionSection = motion.section;
+
     return (
-        <motion.section
+        <MotionSection
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -12,6 +14,6 @@ export const Section = ({ children, className = '', delay = 0 }) => {
             <div className="container">
                 {children}
             </div>
-        </motion.section>
+        </MotionSection>
     );
 };

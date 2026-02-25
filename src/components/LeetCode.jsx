@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Code, ExternalLink, Loader2 } from 'lucide-react';
 import { Section } from './Section';
+import { trackButtonClick } from '../lib/analytics';
 
 export const LeetCode = ({ username }) => {
     const [stats, setStats] = useState(null);
@@ -65,6 +66,7 @@ export const LeetCode = ({ username }) => {
                             href={`https://leetcode.com/${username}`}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => trackButtonClick('leetcode-profile')}
                             style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',

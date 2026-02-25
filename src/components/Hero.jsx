@@ -1,7 +1,12 @@
 import { Mail, Linkedin, Github, MapPin } from 'lucide-react';
 import { Section } from './Section';
+import { trackButtonClick } from '../lib/analytics';
 
 export const Hero = ({ data }) => {
+    const handleClick = (buttonKey) => {
+        trackButtonClick(buttonKey);
+    };
+
     return (
         <Section className="hero">
             <div style={{ textAlign: 'center', padding: '4rem 0' }}>
@@ -50,13 +55,32 @@ export const Hero = ({ data }) => {
                     justifyContent: 'center',
                     gap: '2rem'
                 }}>
-                    <a href={`mailto:${data.contact.email}`} aria-label="Email" style={iconLinkStyle}>
+                    <a
+                        href={`mailto:${data.contact.email}`}
+                        aria-label="Email"
+                        style={iconLinkStyle}
+                        onClick={() => handleClick('email')}
+                    >
                         <Mail size={24} />
                     </a>
-                    <a href={data.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={iconLinkStyle}>
+                    <a
+                        href={data.contact.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        style={iconLinkStyle}
+                        onClick={() => handleClick('linkedin')}
+                    >
                         <Linkedin size={24} />
                     </a>
-                    <a href={data.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={iconLinkStyle}>
+                    <a
+                        href={data.contact.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        style={iconLinkStyle}
+                        onClick={() => handleClick('github')}
+                    >
                         <Github size={24} />
                     </a>
                 </div>
